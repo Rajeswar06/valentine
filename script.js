@@ -16,14 +16,10 @@ const noMessages = [
 ];
 let lastNoMessageIndex = -1;
 
-const moveNoButton = (event) => {
-  if (event && event.type === "touchstart") {
-    event.preventDefault();
-  }
-  const maxX = Math.max(0, questionContainer.clientWidth - noBtn.offsetWidth);
-  const maxY = Math.max(0, questionContainer.clientHeight - noBtn.offsetHeight);
-  const newX = Math.floor(Math.random() * maxX);
-  const newY = Math.floor(Math.random() * maxY);
+// /change the postion of no button
+noBtn.addEventListener("mouseover", () => {
+  const newX = Math.floor(Math.random() * questionContainer.offsetWidth);
+  const newY = Math.floor(Math.random() * questionContainer.offsetWidth);
 
   noBtn.style.left = `${newX}px`;
   noBtn.style.top = `${newY}px`;
@@ -34,13 +30,7 @@ const moveNoButton = (event) => {
   }
   lastNoMessageIndex = nextIndex;
   noBtn.textContent = noMessages[nextIndex];
-};
-
-// /change the postion of no button
-noBtn.addEventListener("mouseover", moveNoButton);
-noBtn.addEventListener("pointerdown", moveNoButton);
-noBtn.addEventListener("touchstart", moveNoButton, { passive: false });
-noBtn.addEventListener("click", moveNoButton);
+});
 
 // yes button functionality
 
