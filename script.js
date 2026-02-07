@@ -4,6 +4,17 @@ const gifResult = document.querySelector(".gif-result");
 const heartLoader = document.querySelector(".cssload-main");
 const yesBtn = document.querySelector(".js-yes-btn");
 const noBtn = document.querySelector(".js-no-btn");
+const noMessages = [
+  "Are you sure?",
+  "Think again!",
+  "Really?",
+  "Please reconsider!",
+  "Don't be so cold!",
+  "Give it another thought!",
+  "Maybe yes?",
+  "One more chance?",
+];
+let lastNoMessageIndex = -1;
 
 // /change the postion of no button
 noBtn.addEventListener("mouseover", () => {
@@ -12,6 +23,13 @@ noBtn.addEventListener("mouseover", () => {
 
   noBtn.style.left = `${newX}px`;
   noBtn.style.top = `${newY}px`;
+
+  let nextIndex = Math.floor(Math.random() * noMessages.length);
+  if (nextIndex === lastNoMessageIndex) {
+    nextIndex = (nextIndex + 1) % noMessages.length;
+  }
+  lastNoMessageIndex = nextIndex;
+  noBtn.textContent = noMessages[nextIndex];
 });
 
 // yes button functionality
