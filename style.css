@@ -9,6 +9,8 @@ body {
   align-items: center;
   background-color: white;
   font-family: "Quicksand", sans-serif;
+  min-height: 100vh;
+  padding: 2rem 1rem 3rem;
 }
 .container {
   position: absolute;
@@ -27,6 +29,8 @@ body {
   top: 40%;
   left: 50%;
   transition: 0.2s;
+  width: min(90vw, 720px);
+  text-align: center;
 }
 .local-gif {
   width: 100%;
@@ -36,6 +40,12 @@ body {
   margin: 0 auto 3rem auto;
   pointer-events: none;
 }
+.love-note {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #333;
+  margin: 0 auto 1.5rem;
+}
 .question {
   font-size: 3.5rem;
   margin-bottom: 1rem;
@@ -44,6 +54,8 @@ body {
   display: flex;
   justify-content: center;
   gap: 1.5rem;
+  position: relative;
+  min-height: 70px;
 }
 .btn {
   position: absolute;
@@ -66,12 +78,23 @@ body {
   box-shadow: 0px 6px 20px rgba(255, 107, 129, 0.7);
   text-shadow: 1px 1px 5px rgba(255, 182, 193, 0.8);
 }
+.btn:active,
+.btn:focus,
+.btn:focus-visible {
+  background-color: #ff54a4;
+  transform: scale(1.05);
+  box-shadow: 0px 4px 15px rgba(255, 107, 129, 0.5);
+  text-shadow: none;
+  outline: none;
+}
 
 .yes-btn {
   right: 54%;
 }
 .no-btn {
   left: 54%;
+  z-index: 2;
+  touch-action: manipulation;
 }
 
 .result-container {
@@ -93,6 +116,48 @@ body {
 .result-container h2 {
   font-size: 3.2rem;
   text-align: center;
+}
+
+@media (max-width: 768px) {
+  .question-container,
+  .result-container {
+    top: 50%;
+  }
+
+  .question {
+    font-size: 2.4rem;
+  }
+
+  .love-note {
+    font-size: 1rem;
+  }
+
+  .btn {
+    font-size: 16px;
+    padding: 12px 20px;
+  }
+
+  .yes-btn {
+    right: 58%;
+  }
+
+  .no-btn {
+    left: 58%;
+  }
+}
+
+@media (max-width: 480px) {
+  .question {
+    font-size: 2rem;
+  }
+
+  .local-gif {
+    margin-bottom: 2rem;
+  }
+
+  .result-container h2 {
+    font-size: 2.4rem;
+  }
 }
 
 /* heart loader */
